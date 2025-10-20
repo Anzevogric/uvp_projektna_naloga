@@ -14,14 +14,14 @@ def prenesi_stran():
 
     os.makedirs("podatki", exist_ok=True)
 
-    odgovor = requests.get(url, headers=headers)
-    if odgovor.status_code == 200:
+    vsebina = requests.get(url, headers=headers)
+    if vsebina.status_code == 200:
         pot = os.path.join("podatki", "goodreads_stran.html")
         with open(pot, "w", encoding="utf-8") as f:
-            f.write(odgovor.text)
+            f.write(vsebina.text)
         print("Stran prenesena in shranjena v goodreads_stran.html")
     else:
-        print(f"Napaka, (status {odgovor.status_code})")
+        print(f"Napaka, (status {vsebina.status_code})")
 
 
 def izlusci_knjige():
