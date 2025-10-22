@@ -1,7 +1,7 @@
 import requests
 import os
 import csv
-from bs4 import BeautifulSoup
+import bs4
 
 
 def prenesi_stran():
@@ -30,7 +30,7 @@ def izlusci_knjige():
     with open(pot, "r", encoding="utf-8") as f:
         vsebina = f.read()
 
-    soup = BeautifulSoup(vsebina, "html.parser")
+    soup = bs4.BeautifulSoup(vsebina, "html.parser")
     knjige_html = soup.find_all("tr", {"itemtype": "http://schema.org/Book"})
 
     knjige = []
